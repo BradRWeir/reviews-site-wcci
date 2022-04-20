@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Product>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="product-index">
+    <div class="product-title"><h1>Products</h1></div>
+    <div class="product-control">
+        <div class="control-button">
+            <a href="/Product/Add/">Add Product</a>
+        </div>
+    </div>
+    <ul class="product-index-cards card-container-row">
+        @foreach(Product product in Model)
+        {
+            <li class="card">
+                <div class="card-details-name">
+                            
+                    <a href="/Product/Detail/@product.Id"><h2>@product.Name</h2></a>
+                </div>
+                <div class="card-image-container">
+                    <img class="card-image" src="@product.PictureOrDefault" />
+                </div>
+                <div class="card-details">
+                        
+                        
+                        <table class="card-details-specs">
+                            <tr>
+                                <td class="row-header">OS:</td><td>@product.OSVer</td>
+                            </tr>
+                            <tr>
+                                <td class="row-header">CPU:</td><td>@product.Processor</td>
+                            </tr>
+                            <tr>
+                                <td class="row-header">RAM:</td><td>@product.RamSize</td>
+                            </tr>
+                            <tr>
+                                <td class="row-header">Storage:</td><td>@product.Storage</td>
+                            </tr>
+                            <tr>
+                                <td class="row-header">Released:</td><td>@product.ReleaseDate.ToString("MM/dd/yy")</td>
+                            </tr>
+                        </table>
+                        
+                </div>
+                    
+                <div class="card-rating">
+                        
+                            <div class="card-control-container">
+                                <div>
+                                <div class="card-control-button">
+                                    <a href="/Product/Update/@product.Id">Edit</a>
+                                </div>
+                                <div class="card-control-button">
+                                    <a href="/Product/Delete/@product.Id">Delete</a>
+                                </div>
+                                </div>
+                            </div>
+                    
+                </div>
+            </li>
+        }
+    </ul>
+</div>
+

@@ -1,0 +1,105 @@
+﻿@model Review
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@*<ul>
+    <li>Review for: @Model.Product.Brand - @Model.Product.Model</li>
+    <li>Rating: @Model.Rating</li>
+    <li>Review Date: @Model.ReviewDate</li>
+    <li>@Model.Content</li>
+</ul>
+
+<a href="/Review/Edit/@Model.Id">Edit</a>|
+<a href="/Review/Delete/@Model.Id">Delete</a>*@
+
+
+<div class="product-detail-layout">
+    <!-- Hero -->
+    <div class="product-detail-hero">
+        <img src="@Model.Product.PictureOrDefault"/>
+    </div>
+
+    <!-- Details -->
+    <div class="product-detail-details">
+        <h1>@Model.Product.Brand @Model.Product.Model</h1>
+        <table class="card-details-specs">
+            <tr>
+                <td class="row-header">OS:</td><td>@Model.Product.OSVer</td>
+            </tr>
+            <tr>
+                <td class="row-header">CPU:</td><td>@Model.Product.Processor</td>
+            </tr>
+            <tr>
+                <td class="row-header">RAM:</td><td>@Model.Product.RamSize</td>
+            </tr>
+            <tr>
+                <td class="row-header">Storage:</td><td>@Model.Product.Storage</td>
+            </tr>
+            <tr>
+                <td class="row-header">Released:</td><td>@Model.Product.ReleaseDate.ToString("MMMM dd, yyyy")</td>
+            </tr>
+            <tr>
+                <td class="row-header">Price:</td><td>@Model.Product.Price.ToString("C2")</td>
+            </tr>
+        </table>
+
+        <div class="card-control-container">
+            <div>
+            <div class="card-control-button">
+                <a href="/Product/Update/@Model.Product.Id">Edit</a>
+            </div>
+            <div class="card-control-button">
+                <a href="/Product/Remove/@Model.Product.Id">Remove</a>
+            </div>
+            </div>
+        </div>
+
+        
+        
+    </div>
+
+    <!-- Reviews -->
+    <div class="product-detail-reviews">
+        <h1>Reviews</h1>
+        <div class="product-control">
+        <div class="control-button">
+            <a href="/Product/Detail/@Model.ProductId">Cancel</a>
+        </div>
+        </div>
+        <ul class="product-index-cards card-container-row">
+                <li class="review-card">
+                    <div class="review-card-title">
+                        <a href="/Review/Detail/@Model.Id"><h2>@Model.Title</h2></a>
+                    </div>
+                    <div class="review-card-details">
+                        <div>
+                            <p>
+                                @Model.Content;
+                            </p>
+                            <h2>Submitted By: @Model.UserName</h2>
+                        </div>
+                        <div class="card-control-container">
+                            <div>
+                                <div class="card-control-button">
+                                    <a href="/Review/Edit/@Model.Id">Edit</a>
+                                </div>
+                                <div class="card-control-button">
+                                    <a href="/Review/Delete/@Model.Id">Delete</a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card-rating">
+                        <div class="review-card-rating-background">
+                            <div>@Model.Rating</div>
+                        </div>
+                    </div>
+                </li>
+        </ul>
+    </div>
+
+</div>

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <header>
+        @*<div class="logo">*@
+            <img height="100" class="bird" src="~/images/brd_logo_sm.svg" />
+            <div class="logo-text"><h1>BR.Dphone</h1></div>
+        @*</div>*@
+        <nav>
+            <ul>
+                <li><a class="nav" href="~/Home/">Home</a></li>
+                <li><a class="nav" href="~/Product/">Products</a></li>
+                @*<li><a class="nav" href="~/Review/">Reviews</a></li>
+                <li><a class="nav" href="~/Category/">Categories</a></li>*@
+            </ul>
+        </nav>
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+    <footer>
+        &copy; Brad Rimma & Denzale 2022
+    </footer>
+    @RenderSection("Scripts",false)
+</body>
+</html>

@@ -1,0 +1,163 @@
+﻿@model template_csharp_reviews_site.Models.Product
+
+@{
+    ViewData["Title"] = "Edit Product";
+}
+
+<div class="product-index">
+    <div class="product-title"><h1>Edit Product</h1></div>
+    <div class="product-control">
+        <div class="control-button">
+            <a asp-action="Index">Cancel</a>
+        </div>
+    </div>
+        <form asp-action="Update" class="card-container">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <li class="card center">
+                <div class="card-details-name">
+                            
+                    <div class="form-group inline">
+                        <label asp-for="Brand" class="control-label">Brand: </label>
+                        <input asp-for="Brand" class="form-control" />
+                        <span asp-validation-for="Brand" class="text-danger"></span>
+                    </div>
+
+                     <div class="form-group inline">
+                        <label asp-for="Model" class="control-label">Model: </label>
+                        <input asp-for="Model" class="form-control" />
+                        <span asp-validation-for="Model" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="card-image-container">
+                    <img class="card-image" src="@Model.Picture" />
+                </div>
+                <div class="card-details">
+            
+                        <div class="form-group">
+                            <label asp-for="Processor" class="control-label">Processor: </label>
+                            <input asp-for="Processor" class="form-control" />
+                            <span asp-validation-for="Processor" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="RamSize" class="control-label">RAM (in GB): </label>
+                            <input asp-for="RamSize" class="form-control" />
+                            <span asp-validation-for="RamSize" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Storage" class="control-label">Storage (in GB): </label>
+                            <input asp-for="Storage" class="form-control" />
+                            <span asp-validation-for="Storage" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="OSVer" class="control-label"> OS Version: </label>
+                            <input asp-for="OSVer" class="form-control" />
+                            <span asp-validation-for="OSVer" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Price" class="control-label">Price (USD): </label>
+                            <input asp-for="Price" class="form-control" />
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ReleaseDate" class="control-label">Release Date: </label>
+                            <input asp-for="ReleaseDate" class="form-control" />
+                            <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Picture" class="control-label">Image URL: </label>
+                            <input asp-for="Picture" class="form-control" />
+                            <span asp-validation-for="Picture" class="text-danger"></span>
+                        </div>
+                        
+                    </div>
+                    
+                <div class="card-rating">
+                        
+                            <div class="card-control-container">
+                                <div>
+                                    
+                                    <div class="card-control-button">
+                                         <div class="form-group">
+                                            <input type="submit" value="Edit" class="btn btn-primary" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                </div>
+            </li>
+        </form>
+</div>
+
+
+
+
+@*<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Update">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Model" class="control-label"></label>
+                <input asp-for="Model" class="form-control" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Brand" class="control-label"></label>
+                <input asp-for="Brand" class="form-control" />
+                <span asp-validation-for="Brand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OSVer" class="control-label"></label>
+                <input asp-for="OSVer" class="form-control" />
+                <span asp-validation-for="OSVer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Processor" class="control-label"></label>
+                <input asp-for="Processor" class="form-control" />
+                <span asp-validation-for="Processor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RamSize" class="control-label"></label>
+                <input asp-for="RamSize" class="form-control" />
+                <span asp-validation-for="RamSize" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Storage" class="control-label"></label>
+                <input asp-for="Storage" class="form-control" />
+                <span asp-validation-for="Storage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReleaseDate" class="control-label"></label>
+                <input asp-for="ReleaseDate" class="form-control" />
+                <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Picture" class="control-label">Image URL</label>
+                <input asp-for="Picture" class="form-control" />
+                <span asp-validation-for="Picture" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,92 @@
+﻿@model IOrderedEnumerable<Product>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    var newestReleases = Model.OrderByDescending(p => p.ReleaseDate);
+}
+
+<div class="home-column">
+    <h1>Bestsellers</h1>
+
+    <ol class="card-container">
+        @foreach (Product product in Model)
+        {
+            <li class="card">
+                    <div class="card-details-name">
+                            <a href="/Product/Detail/@product.Id"><h2>@product.Name</h2></a>
+                    </div>
+                    <div class="card-image-container">
+                        <img class="card-image" src="@product.PictureOrDefault" />
+                    </div>
+                    <div class="card-details">
+                        
+                        
+                            <table class="card-details-specs">
+                                <tr>
+                                    <td class="row-header">OS:</td><td>@product.OSVer</td>
+                                </tr>
+                                <tr>
+                                    <td class="row-header">CPU:</td><td>@product.Processor</td>
+                                </tr>
+                                <tr>
+                                    <td class="row-header">RAM:</td><td>@product.RamSize</td>
+                                </tr>
+                                <tr>
+                                    <td class="row-header">Storage:</td><td>@product.Storage</td>
+                                </tr>
+                            </table>
+                        
+                    </div>
+                    <div class="card-rating">
+                        <div class="card-details-rating">
+                            <div>@product.AverageReviewRating.ToString("N1")</div>
+                        </div>
+                    </div>
+            </li>
+        }
+    </ol>
+</div>
+<div class="home-column">
+    <h1>Latest Releases</h1>
+    <ol class="card-container">
+
+        @foreach (Product product in newestReleases)
+        {
+            <li class="card">
+                    <div class="card-details-name">
+                            <a href="/Product/Detail/@product.Id"><h2>@product.Name</h2></a>
+                        </div>
+                    <div class="card-image-container">
+                        <img class="card-image" src="@product.PictureOrDefault" />
+                    </div>
+                    <div class="card-details">
+                        
+                        
+                            <table class="card-details-specs">
+                                <tr>
+                                    <td class="row-header">OS:</td><td>@product.OSVer</td>
+                                </tr>
+                                <tr>
+                                    <td class="row-header">CPU:</td><td>@product.Processor</td>
+                                </tr>
+                                <tr>
+                                    <td class="row-header">RAM:</td><td>@product.RamSize</td>
+                                </tr>
+                                <tr>
+                                    <td class="row-header">Storage:</td><td>@product.Storage</td>
+                                </tr>
+                            </table>
+                        
+                    </div>
+                    
+                    <div class="card-rating">
+                            <div class="card-details-release">
+                                <div>@product.ReleaseDate.ToString("MMMM dd, yyyy")</div>
+                        </div>
+                    </div>
+            </li>
+        }
+    </ol>
+</div>
+

@@ -1,0 +1,139 @@
+﻿@model template_csharp_reviews_site.Models.Review
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="product-index">
+    <div class="product-title"><h1>Edit Review for @Model.Product.Name</h1></div>
+    <div class="product-control">
+        <div class="control-button">
+            <a asp-action="Index">Cancel</a>
+        </div>
+    </div>
+        <form asp-action="Edit" class="card-container">
+            <input type="hidden" asp-for="Id" value="0" />
+            <input type="hidden" asp-for="ProductId" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <li class="card center">
+                <div class="card-details-name">
+                            
+                    <div class="form-group inline">
+                        <label asp-for="Title" class="control-label">Title: </label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="card-image-container">
+                    <img class="card-image" src="@Model.Product.PictureOrDefault" />
+                </div>
+                <div class="card-details">
+            
+                        <div class="form-group">
+                            <label asp-for="Content" class="control-label">Content: </label>
+                            <input asp-for="Content" class="form-control" />
+                            <span asp-validation-for="Content" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label asp-for="Rating" class="control-label">Rating: </label>
+                            <select asp-for="Rating" >
+
+                            @for (int i = 0; i < 6; i++)
+                            {
+                                if(Model.Rating == i)
+                                {
+                                    <option selected="true" value ="@i">@i Stars</option>
+                                }
+                                else
+                                {
+                                    <option value ="@i">@i Stars</option>
+                                }
+                            }
+                            </select>
+                            <span asp-validation-for="Rating" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="UserName" class="control-label">E-mail: </label>
+                            <input asp-for="UserName" class="form-control" />
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                       
+                        
+                    </div>
+                    
+                <div class="card-rating">
+                        
+                            <div class="card-control-container">
+                                <div>
+                                    
+                                    <div class="card-control-button">
+                                         <div class="form-group">
+                                            <input type="submit" value="Edit" class="btn btn-primary" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                </div>
+            </li>
+
+            
+            
+
+            
+            
+
+        </form>
+</div>
+
+
+@*<h4>Review</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="ProductId" />
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReviewDate" class="control-label"></label>
+                <input asp-for="ReviewDate" class="form-control" />
+                <span asp-validation-for="ReviewDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Content" class="control-label"></label>
+                <input asp-for="Content" class="form-control" />
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rating" class="control-label"></label>
+                <input asp-for="Rating" class="form-control" />
+                <span asp-validation-for="Rating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

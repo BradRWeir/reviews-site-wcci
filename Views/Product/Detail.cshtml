@@ -1,0 +1,105 @@
+﻿@model Product
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<div class="product-detail-layout">
+    <!-- Hero -->
+    <div class="product-detail-hero">
+        <img src="@Model.Picture"/>
+    </div>
+
+    <!-- Details -->
+    <div class="product-detail-details">
+        <h1>@Model.Brand - @Model.Model</h1>
+        <table class="card-details-specs">
+            <tr>
+                <td class="row-header">OS:</td><td>@Model.OSVer</td>
+            </tr>
+            <tr>
+                <td class="row-header">CPU:</td><td>@Model.Processor</td>
+            </tr>
+            <tr>
+                <td class="row-header">RAM:</td><td>@Model.RamSize</td>
+            </tr>
+            <tr>
+                <td class="row-header">Storage:</td><td>@Model.Storage</td>
+            </tr>
+            <tr>
+                <td class="row-header">Released:</td><td>@Model.ReleaseDate.ToString("MMMM dd, yyyy")</td>
+            </tr>
+            <tr>
+                <td class="row-header">Price:</td><td>@Model.Price.ToString("C2")</td>
+            </tr>
+        </table>
+
+        <div class="card-control-container">
+            <div>
+            <div class="card-control-button">
+                <a href="/Product/Update/@Model.Id">Edit</a>
+            </div>
+            <div class="card-control-button">
+                <a href="/Product/Remove/@Model.Id">Remove</a>
+            </div>
+            </div>
+        </div>
+
+        
+        
+    </div>
+
+    <!-- Reviews -->
+    <div class="product-detail-reviews">
+        <h1>Reviews</h1>
+        <div class="product-control">
+        <div class="control-button">
+            <a href="/Review/Add/@Model.Id">Add Review</a>
+        </div>
+        </div>
+        <ul class="product-index-cards card-container-row">
+            @foreach (Review review in Model.Reviews)
+            {
+                <li class="review-card">
+                    <div class="review-card-title">
+                        <a href="/Review/Detail/@review.Id"><h2>@review.Title</h2></a>
+                    </div>
+                    <div class="review-card-details">
+                        <div>
+                            <h2>Submitted By: @review.UserName</h2>
+                        </div>
+                        <div class="card-control-container">
+                            <div>
+                                <div class="card-control-button">
+                                    <a href="/Review/Edit/@review.Id">Edit</a>
+                                </div>
+                                <div class="card-control-button">
+                                    <a href="/Review/Delete/@review.Id">Delete</a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card-rating">
+                        <div class="review-card-rating-background">
+                            <div>@review.Rating</div>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
